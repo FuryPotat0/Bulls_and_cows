@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="'current turn: ' + ${curTurn} + ' turns left: ' + ${turnsLeft}"></p>
+<form action="/game-page/start" method="get">
+    <button type="submit">Start game</button>
+</form>
+<form action="/game-page/guess" method="post">
+    <input type="text" name="number" th:value="${previousNumber}">
+    <button type="submit">guess</button>
+</form>
+<p th:text="${result}"></p>
+</body>
+</html>

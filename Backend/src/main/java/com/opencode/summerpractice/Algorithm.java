@@ -1,7 +1,6 @@
 package com.opencode.summerpractice;
 
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Value;
+import com.opencode.summerpractice.game_algorithm.HiddenNumber;
 
 import java.io.*;
 

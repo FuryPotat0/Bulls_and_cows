@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 @Getter
 @Setter
-public class PropertiesTest {
+class PropertiesTest {
     @Value("${limitations}")
     private boolean limitations;
+
+    public String getTurnsLimitation() {
+        return turnsLimitation;
+    }
 
     @Value("${turnsLimitation}")
     private String turnsLimitation;
