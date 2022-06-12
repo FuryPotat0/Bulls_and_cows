@@ -1,51 +1,63 @@
 package com.opencode.summerpractice;
 
-import com.opencode.summerpractice.game_algorithm.HiddenNumber;
+import com.opencode.summerpractice.game_algorithm.GameProperties;
+import com.opencode.summerpractice.game_algorithm.Gameplay;
+import com.opencode.summerpractice.game_algorithm.GuessingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class GameController {
     @Autowired
-    private HiddenNumber hiddenNumber;
+    private Gameplay gameplay;
     @Autowired
-    private PropertiesTest properties;
+    private GameProperties properties;
 
     private boolean isGameStarted = false;
 
     @GetMapping("/game-page")
-    public String getGamePage(Model model,
-                              @RequestParam(value = "previousNumber", required = false) String previousNumber,
-                              @RequestParam(value = "result", required = false) String result){
-        if (!isGameStarted)
-            model.addAttribute("result", "press start button");
+    public String getGamePage(ModelMap model,
+                              @RequestParam(value = "previousNumber", required = false) String previousNumber) {
+        gameplay.testDatabase();
+        if (!isGameStarted){
+            model.addAttribute("gameMessage", "press start button");
+            fillFields(model);
+        }
         else {
-            model.addAttribute("curTurn", hiddenNumber.getTurns());
-            model.addAttribute("turnsLeft", Integer.parseInt(properties.getTurnsLimitation()) - hiddenNumber.getTurns());
-            model.addAttribute("result", result);
+            fillFields(model);
+            model.addAttribute("gameMessage", "");
             model.addAttribute("previousNumber", previousNumber);
         }
         return "game-page";
     }
 
     @GetMapping("/game-page/start")
-    public ModelAndView startGame(ModelMap model){
+    public ModelAndView startGame(ModelMap model) {
         isGameStarted = true;
-        model.addAttribute("result", "game started");
-        hiddenNumber.pickNumber();
-        System.out.println(hiddenNumber.toString());
+        model.addAttribute("gameMessage", "game started");
+        gameplay.pickNewHiddenNumber();
+        System.out.println(gameplay.toString());
         return new ModelAndView("redirect:/game-page", model);
     }
 
     @PostMapping("/game-page/guess")
-    public ModelAndView guessNumber(@ModelAttribute("number") String number, ModelMap model){
-        model.addAttribute("result", hiddenNumber.guess(number));
+    public String guessNumber(@ModelAttribute("number") String number, ModelMap model) {
+        GuessingResult res = gameplay.guessHiddenNumber(number);
+        model.addAttribute("result", "bulls: " + res.getBulls() + " cows: " + res.getCows());
         model.addAttribute("previousNumber", number);
-        return new ModelAndView("redirect:/game-page", model);
+        fillFields(model);
+        return "game-page";
+    }
+
+    public void fillFields(ModelMap model) {
+        model.addAttribute("curTurn", gameplay.getTurns());
+        model.addAttribute("turnsLeft", gameplay.getTurnsLeft());
     }
 }
 

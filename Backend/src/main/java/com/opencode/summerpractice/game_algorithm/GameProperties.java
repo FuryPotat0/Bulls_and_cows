@@ -1,4 +1,4 @@
-package com.opencode.summerpractice;
+package com.opencode.summerpractice.game_algorithm;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,14 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Getter
 @Setter
-class PropertiesTest {
-    @Value("${limitations}")
-    private boolean limitations;
-
-    public String getTurnsLimitation() {
-        return turnsLimitation;
-    }
-
+public class GameProperties {
     @Value("${turnsLimitation}")
     private String turnsLimitation;
 

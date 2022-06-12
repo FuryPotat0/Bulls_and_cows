@@ -56,7 +56,8 @@ public class HiddenNumber {
                 num[number[i] - 1] = i;
             }
         }
-        return Arrays.toString(num);
+        String[] str = Arrays.toString(num).split("[\\[\\]]")[1].split("");
+        return Arrays.toString(str);
     }
 }
 
