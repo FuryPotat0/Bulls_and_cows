@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static org.thymeleaf.util.ListUtils.size;
-
 @Repository
 public class UserEntityDao {
     public void save(UserEntity entity) {
@@ -73,15 +71,15 @@ public class UserEntityDao {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         String hql = "FROM GameEntity ge WHERE ge.user.id = :userId";
 //        String hql = "SELECT ge FROM GameEntity ge LEFT JOIN FETCH ge.user WHERE ";
-        System.out.println(userId);
+//        System.out.println(userId);
         Query query = session.createQuery(hql).setParameter("userId", userId);
         List<GameEntity> list = (List<GameEntity>) query.getResultList();
         session.close();
 //        LOGGER.info("Found {} Models with name '{}'", list.size(), name);
-        System.out.println(size(list));
-        for (GameEntity game: list){
-            System.out.println(game.getId());
-        }
+//        System.out.println(size(list));
+//        for (GameEntity game: list){
+//            System.out.println(game.getId());
+//        }
         return list;
     }
 }

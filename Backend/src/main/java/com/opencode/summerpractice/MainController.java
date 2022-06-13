@@ -1,20 +1,26 @@
 package com.opencode.summerpractice;
 
-import com.opencode.summerpractice.game_algorithm.GameProperties;
+import com.opencode.summerpractice.game_algorithm.Gameplay;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
+@Controller
 public class MainController {
     @Autowired
-    private GameProperties gameProperties;
-
+    Gameplay gameplay;
     @GetMapping("/")
-    public String main(){
-        System.out.println(gameProperties.getTurnsLimitation());
-        System.out.println(gameProperties.getTimeLimitation());
-        return "emptyTemplate";
+    public String main(ModelMap model){
+        return "main";
+    }
+
+    @PostMapping("/")
+    public String login(@ModelAttribute("username") String username, ModelMap model){
+        gameplay.setUserEntity(username);
+        return "redirect:/game-page";
     }
 }
 

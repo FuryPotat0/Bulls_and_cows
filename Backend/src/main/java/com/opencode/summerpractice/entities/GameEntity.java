@@ -30,11 +30,25 @@ public class GameEntity {
     @Column(name = "hidden_number")
     private String hiddenNumber;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
     private List<TurnEntity> turns;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append(id);
+        str.append(", ");
+        str.append(gameTime / 100);
+        str.append(", ");
+        str.append(turnsNumber);
+        str.append(", ");
+        str.append(isWin);
+        str.append(", ");
+        str.append(hiddenNumber);
+        return str.toString();
+    }
 }

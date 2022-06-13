@@ -24,7 +24,8 @@ public class GameController {
     @GetMapping("/game-page")
     public String getGamePage(ModelMap model,
                               @RequestParam(value = "previousNumber", required = false) String previousNumber) {
-        gameplay.testDatabase();
+//        gameplay.testDatabase();
+        System.out.println(gameplay.getUserEntity().getName());
         if (!isGameStarted){
             model.addAttribute("gameMessage", "press start button");
             fillFields(model);
@@ -42,17 +43,37 @@ public class GameController {
         isGameStarted = true;
         model.addAttribute("gameMessage", "game started");
         gameplay.pickNewHiddenNumber();
-        System.out.println(gameplay.toString());
+        System.out.println(gameplay.getHiddenNumber());
         return new ModelAndView("redirect:/game-page", model);
     }
 
     @PostMapping("/game-page/guess")
     public String guessNumber(@ModelAttribute("number") String number, ModelMap model) {
-        GuessingResult res = gameplay.guessHiddenNumber(number);
-        model.addAttribute("result", "bulls: " + res.getBulls() + " cows: " + res.getCows());
-        model.addAttribute("previousNumber", number);
-        fillFields(model);
+        if (!gameplay.isEnd()){
+            GuessingResult res = gameplay.guessHiddenNumber(number);
+            model.addAttribute("result", "bulls: " + res.getBulls() + " cows: " + res.getCows());
+            model.addAttribute("previousNumber", number);
+            fillFields(model);
+        } else{
+            if (gameplay.isWon())
+                model.addAttribute("result", "Игра окончена, вы победили");
+            else
+                model.addAttribute("result", "Игра окончена, вы проиграли");
+        }
+        if (gameplay.isEnd()){
+            if (gameplay.isWon())
+                model.addAttribute("result", "Игра окончена, вы победили");
+            else
+                model.addAttribute("result", "Игра окончена, вы проиграли");
+            fillFields(model);
+        }
         return "game-page";
+    }
+
+    @GetMapping("/game-page/res")
+    public String getRes(){
+        gameplay.printResults();
+        return "redirect:/game-page";
     }
 
     public void fillFields(ModelMap model) {
