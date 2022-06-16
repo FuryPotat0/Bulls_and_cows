@@ -29,12 +29,8 @@ public class TurnEntity {
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder();
-        str.append(id);
-        str.append(", ");
-        str.append(timePast / 100);
-        str.append(", ");
-        str.append(userNumber);
-        return str.toString();
+        return "введённое число: " + userNumber +
+                ", времени прошло: " +
+                timePast / 1000 + " секунд";
     }
 }

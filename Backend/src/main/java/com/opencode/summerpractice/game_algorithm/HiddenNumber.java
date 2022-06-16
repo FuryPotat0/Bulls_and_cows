@@ -5,14 +5,14 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 @Getter
 @Setter
 @Service
 public class HiddenNumber {
-    private int[] number;
+    private int[] number; // загаданное число - массив из 10 элнментов, индекс это цифра в загаданном числе,
+    // а заначение - индекс этой цифры в числе, начиная с единицы
 
     public HiddenNumber() {
         number = new int[10];
@@ -26,7 +26,17 @@ public class HiddenNumber {
             number[i] = 0;
     }
 
-    public void pickNumber(){
+    public void setNumber(String userNumber) { // устанавливает заданное число
+        clearNumber();
+        int[] userNumberIntArray = new int[4];
+        for (int i = 0; i < 4; i++)
+            userNumberIntArray[i] = userNumber.charAt(i) - '0';
+        for (int i = 0; i < 4; i++){
+            this.number[userNumberIntArray[i]] = i + 1;
+        }
+    }
+
+    public void pickNumber(){ //
         clearNumber();
         ArrayList<Integer> pickedDigits = new ArrayList<>();
         for (int i = 0; i < 10; i++)
@@ -56,8 +66,10 @@ public class HiddenNumber {
                 num[number[i] - 1] = i;
             }
         }
-        String[] str = Arrays.toString(num).split("[\\[\\]]")[1].split("");
-        return Arrays.toString(str);
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < 4; i++)
+            str.append(num[i]);
+        return str.toString();
     }
 }
 

@@ -6,157 +6,127 @@ import com.opencode.summerpractice.daos.UserEntityDao;
 import com.opencode.summerpractice.entities.GameEntity;
 import com.opencode.summerpractice.entities.TurnEntity;
 import com.opencode.summerpractice.entities.UserEntity;
+import com.opencode.summerpractice.responds.GameRespond;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
+
+import java.util.ArrayList;
 
 @Service
-@SessionScope
-public class Gameplay { //TODO сделать проверку на количество ходов и время игры
-    @Getter
-    private HiddenNumber hiddenNumber;
-    @Getter
-    private int turns;
-    @Getter
-    private boolean isWon;
-    @Getter
-    private boolean isEnd;
-    private long startTime; // проверка времени игры
-
-    @Autowired
-    private GameProperties properties;
+public class Gameplay {
     @Autowired
     private UserEntityDao userEntityDao;
     @Autowired
     private GameEntityDao gameEntityDao;
     @Autowired
     private TurnEntityDao turnEntityDao;
-    @Getter
-    private UserEntity userEntity;
-    private GameEntity gameEntity;
-
-    public void setUserEntity(String username) {
-        UserEntity user = new UserEntity();
-        user.setName(username);
-        this.userEntity = user;
-        userEntityDao.save(userEntity);
-    }
 
     @Value("${turnsLimitation}")
+    @Getter
     private int turnsLimitation;
     @Value("${timeLimitation}")
+    @Getter
     private int timeLimitation;
 
+    public Long setUserEntity(String username) {
+        UserEntity user = new UserEntity();
+        user.setName(username);
+        userEntityDao.save(user);
+        return user.getId();
+    }
+
+
     public Gameplay() {
-        hiddenNumber = new HiddenNumber();
-        turns = 0;
-        isWon = false;
-        isEnd = false;
-        startTime = 0;
     }
 
-    public int getTurnsLeft(){
-        return turnsLimitation - turns;
-    }
-
-    public void pickNewHiddenNumber(){
-        startTime = System.currentTimeMillis();
+    public Long pickNewHiddenNumber(Long userId) {
+        HiddenNumber hiddenNumber = new HiddenNumber();
         hiddenNumber.pickNumber();
-        turns = 0;
-        isWon = false;
-        isEnd = false;
 
-        gameEntity = new GameEntity();
-        gameEntity.setUser(userEntity);
+        GameEntity gameEntity = new GameEntity();
+
+        UserEntity user = userEntityDao.findById(userId);
+        gameEntity.setUser(user);
         gameEntity.setHiddenNumber(hiddenNumber.toString());
 
         gameEntity.setWin(false);
+        gameEntity.setIsEnd(false);
         gameEntity.setTurnsNumber(0);
-        gameEntity.setGameTime(0L);
+        gameEntity.setGameTime(System.currentTimeMillis());
         gameEntityDao.save(gameEntity);
+        return gameEntity.getId();
     }
 
-    public void testDatabase(){
-        UserEntity user = new UserEntity();
-        user.setName("FuryPotat0");
-        userEntityDao.save(user);
+    public GuessingResult guessHiddenNumber(Long gameId, String userNumber) { //
+        GameEntity gameEntity = gameEntityDao.findById(gameId);
 
-        GameEntity game1 = new GameEntity();
-        game1.setHiddenNumber("1456");
-        game1.setGameTime(100L);
-        game1.setWin(true);
-        game1.setTurnsNumber(3);
-        game1.setUser(user);
+        gameEntity.setTurnsNumber(gameEntity.getTurnsNumber() + 1);
+        gameEntityDao.update(gameEntity);
+        int[] userNumberIntArray = new int[4];
+        for (int i = 0; i < 4; i++)
+            userNumberIntArray[i] = userNumber.charAt(i) - '0';
 
+        HiddenNumber hiddenNumber = new HiddenNumber();
+        hiddenNumber.setNumber(gameEntity.getHiddenNumber());
+        GuessingResult result = hiddenNumber.guess(userNumberIntArray);
+        checkWinCondition(result, gameEntityDao.findById(gameId));
+        TurnEntity turn = new TurnEntity();
+        turn.setUserNumber(userNumber);
+        turn.setTimePast(System.currentTimeMillis() - gameEntity.getGameTime());
+        turn.setGame(gameEntityDao.findById(gameId));
+        turnEntityDao.save(turn);
 
-//        GameEntity game2 = new GameEntity();
-//        game2.setHiddenNumber("1026");
-//        game2.setGameTime(400L);
-//        game2.setWin(false);
-//        game2.setTurnsNumber(30);
-
-
-//        user.getGames().add(game1);
-//        user.getGames().add(game2);
-//        user.setGames1();
-
-        gameEntityDao.save(game1);
-//        gameEntityDao.save(game2);
-//        userEntityDao.update(user);
-
-        userEntityDao.findGames(user.getId());
+        return result;
     }
 
-    public GuessingResult guessHiddenNumber(String userNumber){
-        System.out.println("GameEntity id = " + gameEntity.getId());
-        if (!isEnd){
-            turns++;
-            int[] userNumberIntArray = new int[4];
-            for (int i = 0; i < 4; i++)
-                userNumberIntArray[i] = userNumber.charAt(i) - '0';
-            GuessingResult result = hiddenNumber.guess(userNumberIntArray);
-            checkWinCondition(result);
-            TurnEntity turn = new TurnEntity();
-            turn.setUserNumber(userNumber);
-            turn.setTimePast(System.currentTimeMillis() - startTime);
-            turn.setGame(gameEntity);
-
-            turnEntityDao.save(turn);
-            return result;
-        }
-        return null;
-    }
-
-    private void checkWinCondition(GuessingResult result){
+    private void checkWinCondition(GuessingResult result, GameEntity gameEntity) {
         if (result.getBulls() == 4) {
-            isEnd = true;
-            isWon = true;
             gameEntity.setWin(true);
-            System.out.println("id before:" + gameEntity.getId());
+            gameEntity.setIsEnd(true);
+            gameEntity.setGameTime((System.currentTimeMillis() - gameEntity.getGameTime()) / 1000);
+
             gameEntityDao.update(gameEntity);
-            System.out.println("id after:" + gameEntity.getId());
-        }else if (turns >= turnsLimitation || (System.currentTimeMillis() - startTime) / 100 > timeLimitation){
-            isEnd = true;
+        } else if (gameEntity.getTurnsNumber() >= turnsLimitation
+                || (System.currentTimeMillis() - gameEntity.getGameTime()) / 1000 > timeLimitation) {
             gameEntity.setWin(false);
-            gameEntity.setTurnsNumber(turns);
-            gameEntity.setGameTime((System.currentTimeMillis() - startTime) / 100);
-            System.out.println("id before:" + gameEntity.getId());
+            gameEntity.setIsEnd(true);
+            gameEntity.setGameTime((System.currentTimeMillis() - gameEntity.getGameTime()) / 1000);
+
             gameEntityDao.update(gameEntity);
-            System.out.println("id after:" + gameEntity.getId());
         }
     }
 
-    public void printResults(){
-        for(GameEntity game: userEntityDao.findGames(userEntity.getId())){
-            System.out.println(game);
-            for(TurnEntity turn: gameEntityDao.findTurns(game.getId())){
-                System.out.println(turn);
+    public ArrayList<GameRespond> printResults(Long userId) {
+        ArrayList<GameRespond> arrayList = new ArrayList<>();
+        GameRespond gameRespond;
+        for (GameEntity game : userEntityDao.findGames(userId)) {
+            gameRespond = new GameRespond();
+            gameRespond.setGameTime(game.getGameTime());
+            gameRespond.setTurnsNumber(game.getTurnsNumber());
+            if (game.isWin())
+                gameRespond.setWin("победа");
+            else gameRespond.setWin("поражение");
+            gameRespond.setHiddenNumber(game.getHiddenNumber());
+            ArrayList<String> turns = new ArrayList<>();
+            for (TurnEntity turn : gameEntityDao.findTurns(game.getId())) {
+                turns.add(turn.toString());
             }
+            gameRespond.setTurns(turns);
+            arrayList.add(gameRespond);
         }
+        return arrayList;
     }
 
+    public boolean isEnd(Long gameId){
+        GameEntity gameEntity = gameEntityDao.findById(gameId);
+        return gameEntity.getIsEnd();
+    }
 
+    public boolean isWin(Long gameId){
+        GameEntity gameEntity = gameEntityDao.findById(gameId);
+        return gameEntity.isWin();
+    }
 }
 

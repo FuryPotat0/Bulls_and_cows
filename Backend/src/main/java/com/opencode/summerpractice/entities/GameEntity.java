@@ -37,18 +37,6 @@ public class GameEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @Override
-    public String toString(){
-        StringBuilder str = new StringBuilder();
-        str.append(id);
-        str.append(", ");
-        str.append(gameTime / 100);
-        str.append(", ");
-        str.append(turnsNumber);
-        str.append(", ");
-        str.append(isWin);
-        str.append(", ");
-        str.append(hiddenNumber);
-        return str.toString();
-    }
+    @Column(name = "is_end")
+    private Boolean isEnd;
 }

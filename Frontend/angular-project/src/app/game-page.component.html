@@ -1,1 +1,30 @@
-<p>game</p>
+<h2>Игра Быки и Коровы</h2>
+<button class="btn-primary" (click)="startGame()">Начать игру</button>
+
+<input
+#number
+(keyup.enter)="pickNumber(number.value);"
+class="lg-text-input"/>
+
+<button class="btn-primary" (click)="pickNumber(number.value)">Проверить число</button>
+<p>{{result}}</p>
+<p>Ходов осталось: {{turnsLeft}}</p>
+<p>Ходов прошло: {{turnsPast}}</p>
+<cd-timer #basicTimer [autoStart]='false' [countdown]="true" [startTime]="timeLimitation"></cd-timer>
+<h3>Статистика пользователя {{username}}</h3>
+<table *ngFor="let json of statistic">
+    <tr>
+        <td>время игры: {{json.gameTime}} секунд, </td>
+        <td>количестов ходов: {{json.turnsNumber}}, </td>
+        <td>результат: {{json.win}}, </td>
+        <td>загаданное число: {{json.hiddenNumber}}</td>
+        <td>ходы: <table *ngFor="let turn of json.turns">
+            <tr>
+                <td>
+                    {{turn}}
+                </td>
+            </tr>
+        </table>
+        </td>
+    </tr>
+</table>

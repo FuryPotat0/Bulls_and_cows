@@ -1,0 +1,572 @@
+2022-06-16 22:41:41,383 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-1] UserEntity with id=1 was saved
+2022-06-16 23:21:51,669 ERROR org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] [http-nio-8080-exec-1] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: attempt to create saveOrUpdate event with null entity; nested exception is java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity] with root cause
+java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:45)
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:28)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:665)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:660)
+	at com.opencode.summerpractice.daos.UserEntityDao.save(UserEntityDao.java:25)
+	at com.opencode.summerpractice.daos.UserEntityDao$$FastClassBySpringCGLIB$$1504fd11.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.opencode.summerpractice.daos.UserEntityDao$$EnhancerBySpringCGLIB$$7ee4ef99.save(<generated>)
+	at com.opencode.summerpractice.game_algorithm.Gameplay.setUserEntity(Gameplay.java:39)
+	at com.opencode.summerpractice.controllers.MainController.login(MainController.java:26)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-06-16 23:21:56,273 ERROR org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] [http-nio-8080-exec-3] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: attempt to create saveOrUpdate event with null entity; nested exception is java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity] with root cause
+java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:45)
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:28)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:665)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:660)
+	at com.opencode.summerpractice.daos.UserEntityDao.save(UserEntityDao.java:25)
+	at com.opencode.summerpractice.daos.UserEntityDao$$FastClassBySpringCGLIB$$1504fd11.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.opencode.summerpractice.daos.UserEntityDao$$EnhancerBySpringCGLIB$$7ee4ef99.save(<generated>)
+	at com.opencode.summerpractice.game_algorithm.Gameplay.setUserEntity(Gameplay.java:39)
+	at com.opencode.summerpractice.controllers.MainController.login(MainController.java:26)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-06-16 23:23:26,836 ERROR org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] [http-nio-8080-exec-5] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: attempt to create saveOrUpdate event with null entity; nested exception is java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity] with root cause
+java.lang.IllegalArgumentException: attempt to create saveOrUpdate event with null entity
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:45)
+	at org.hibernate.event.spi.SaveOrUpdateEvent.<init>(SaveOrUpdateEvent.java:28)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:665)
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:660)
+	at com.opencode.summerpractice.daos.UserEntityDao.save(UserEntityDao.java:25)
+	at com.opencode.summerpractice.daos.UserEntityDao$$FastClassBySpringCGLIB$$1504fd11.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.opencode.summerpractice.daos.UserEntityDao$$EnhancerBySpringCGLIB$$7ee4ef99.save(<generated>)
+	at com.opencode.summerpractice.game_algorithm.Gameplay.setUserEntity(Gameplay.java:39)
+	at com.opencode.summerpractice.controllers.MainController.login(MainController.java:26)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-06-16 23:25:36,146 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-2] UserEntity with id=1 was saved
+2022-06-16 23:25:36,148 INFO com.opencode.summerpractice.controllers.MainController [http-nio-8080-exec-2] user qwe login
+2022-06-16 23:25:37,929 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-3] UserEntity with id=1 was found
+2022-06-16 23:25:37,936 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was saved
+2022-06-16 23:25:37,936 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User started the game
+2022-06-16 23:25:40,724 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,725 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,729 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was updated
+2022-06-16 23:25:40,730 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,730 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was updated
+2022-06-16 23:25:40,731 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,734 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-6] TurnEntity with id=3 was saved
+2022-06-16 23:25:40,735 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User guess number 1234
+2022-06-16 23:25:40,736 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,736 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:25:40,736 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User win the game
+2022-06-16 23:25:40,742 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] Send user statistic
+2022-06-16 23:25:40,799 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-5] Found 1 GameEntities with id '1'
+2022-06-16 23:25:40,802 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 1 TurnEntities with id=2
+2022-06-16 23:28:59,797 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-2] UserEntity with id=1 was saved
+2022-06-16 23:28:59,798 INFO com.opencode.summerpractice.controllers.MainController [http-nio-8080-exec-2] user qwe login
+2022-06-16 23:29:01,609 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-4] UserEntity with id=1 was found
+2022-06-16 23:29:01,614 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was saved
+2022-06-16 23:29:01,614 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User started the game
+2022-06-16 23:29:03,832 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,833 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,836 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was updated
+2022-06-16 23:29:03,836 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,837 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was updated
+2022-06-16 23:29:03,837 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,841 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-3] TurnEntity with id=3 was saved
+2022-06-16 23:29:03,842 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User guess number 1234
+2022-06-16 23:29:03,843 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,843 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:29:03,843 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User win the game
+2022-06-16 23:29:03,849 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] Send user statistic
+2022-06-16 23:29:03,907 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-5] Found 1 GameEntities with id '1'
+2022-06-16 23:29:03,910 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 1 TurnEntities with id=2
+2022-06-16 23:32:38,492 WARN com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-1] UserEntity with id 1 wasn't found
+2022-06-16 23:32:38,516 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=1 was saved
+2022-06-16 23:32:38,516 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User started the game
+2022-06-16 23:32:41,719 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was found
+2022-06-16 23:32:41,720 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was found
+2022-06-16 23:32:41,724 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was updated
+2022-06-16 23:32:41,724 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was found
+2022-06-16 23:32:41,724 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was found
+2022-06-16 23:32:41,728 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-2] TurnEntity with id=2 was saved
+2022-06-16 23:32:41,730 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User guess number 1234
+2022-06-16 23:32:41,730 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=1 was found
+2022-06-16 23:32:45,642 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was found
+2022-06-16 23:32:45,642 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was found
+2022-06-16 23:32:45,643 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was updated
+2022-06-16 23:32:45,644 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was found
+2022-06-16 23:32:45,644 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was found
+2022-06-16 23:32:45,644 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-3] TurnEntity with id=3 was saved
+2022-06-16 23:32:45,644 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User guess number 2345
+2022-06-16 23:32:45,645 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=1 was found
+2022-06-16 23:32:52,140 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was found
+2022-06-16 23:32:52,141 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was found
+2022-06-16 23:32:52,141 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was updated
+2022-06-16 23:32:52,142 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was found
+2022-06-16 23:32:52,142 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was found
+2022-06-16 23:32:52,143 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-4] TurnEntity with id=4 was saved
+2022-06-16 23:32:52,143 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User guess number 1234
+2022-06-16 23:32:52,143 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=1 was found
+2022-06-16 23:32:57,595 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was found
+2022-06-16 23:32:57,596 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was found
+2022-06-16 23:32:57,596 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was updated
+2022-06-16 23:32:57,597 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was found
+2022-06-16 23:32:57,597 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was found
+2022-06-16 23:32:57,598 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-5] TurnEntity with id=5 was saved
+2022-06-16 23:32:57,598 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] User guess number 1234
+2022-06-16 23:32:57,598 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=1 was found
+2022-06-16 23:32:58,419 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was found
+2022-06-16 23:32:58,419 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was found
+2022-06-16 23:32:58,420 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was updated
+2022-06-16 23:32:58,420 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was found
+2022-06-16 23:32:58,421 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was found
+2022-06-16 23:32:58,421 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-6] TurnEntity with id=6 was saved
+2022-06-16 23:32:58,421 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User guess number 1234
+2022-06-16 23:32:58,421 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=1 was found
+2022-06-16 23:33:00,354 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,355 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,355 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was updated
+2022-06-16 23:33:00,356 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,356 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was updated
+2022-06-16 23:33:00,357 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,357 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-7] TurnEntity with id=7 was saved
+2022-06-16 23:33:00,357 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] User guess number 1234
+2022-06-16 23:33:00,357 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,358 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=1 was found
+2022-06-16 23:33:00,358 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] User lose the game
+2022-06-16 23:33:00,363 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-8] Send user statistic
+2022-06-16 23:33:00,418 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-8] Found 0 GameEntities with id '1'
+2022-06-16 23:33:07,066 WARN com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-9] UserEntity with id 1 wasn't found
+2022-06-16 23:33:07,067 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=8 was saved
+2022-06-16 23:33:07,067 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-9] User started the game
+2022-06-16 23:33:13,307 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-10] UserEntity with id=9 was saved
+2022-06-16 23:33:13,307 INFO com.opencode.summerpractice.controllers.MainController [http-nio-8080-exec-10] user qwe login
+2022-06-16 23:33:14,937 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-1] UserEntity with id=9 was found
+2022-06-16 23:33:14,938 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=10 was saved
+2022-06-16 23:33:14,938 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User started the game
+2022-06-16 23:33:19,835 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was found
+2022-06-16 23:33:19,836 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was found
+2022-06-16 23:33:19,837 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was updated
+2022-06-16 23:33:19,837 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was found
+2022-06-16 23:33:19,837 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was found
+2022-06-16 23:33:19,838 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-2] TurnEntity with id=11 was saved
+2022-06-16 23:33:19,838 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User guess number 1234
+2022-06-16 23:33:19,838 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=10 was found
+2022-06-16 23:33:23,421 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was found
+2022-06-16 23:33:23,422 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was found
+2022-06-16 23:33:23,423 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was updated
+2022-06-16 23:33:23,423 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was found
+2022-06-16 23:33:23,423 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was found
+2022-06-16 23:33:23,424 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-3] TurnEntity with id=12 was saved
+2022-06-16 23:33:23,424 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User guess number 1256
+2022-06-16 23:33:23,424 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=10 was found
+2022-06-16 23:33:38,495 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,495 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,497 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was updated
+2022-06-16 23:33:38,497 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,498 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was updated
+2022-06-16 23:33:38,498 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,499 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-4] TurnEntity with id=13 was saved
+2022-06-16 23:33:38,499 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User guess number 1256
+2022-06-16 23:33:38,499 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,500 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=10 was found
+2022-06-16 23:33:38,500 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User lose the game
+2022-06-16 23:33:38,505 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] Send user statistic
+2022-06-16 23:33:38,506 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-5] Found 1 GameEntities with id '9'
+2022-06-16 23:33:38,509 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 3 TurnEntities with id=10
+2022-06-16 23:34:10,392 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-6] UserEntity with id=9 was found
+2022-06-16 23:34:10,393 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=14 was saved
+2022-06-16 23:34:10,393 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User started the game
+2022-06-16 23:34:14,603 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was found
+2022-06-16 23:34:14,603 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was found
+2022-06-16 23:34:14,604 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was updated
+2022-06-16 23:34:14,604 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was found
+2022-06-16 23:34:14,605 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was found
+2022-06-16 23:34:14,605 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-7] TurnEntity with id=15 was saved
+2022-06-16 23:34:14,605 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] User guess number 1234
+2022-06-16 23:34:14,605 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=14 was found
+2022-06-16 23:34:44,618 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-9] UserEntity with id=16 was saved
+2022-06-16 23:34:44,618 INFO com.opencode.summerpractice.controllers.MainController [http-nio-8080-exec-9] user rty login
+2022-06-16 23:34:45,402 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-10] UserEntity with id=16 was found
+2022-06-16 23:34:45,402 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=17 was saved
+2022-06-16 23:34:45,402 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-10] User started the game
+2022-06-16 23:34:48,354 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was found
+2022-06-16 23:34:48,354 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was found
+2022-06-16 23:34:48,355 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was updated
+2022-06-16 23:34:48,355 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was found
+2022-06-16 23:34:48,356 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was found
+2022-06-16 23:34:48,356 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-1] TurnEntity with id=18 was saved
+2022-06-16 23:34:48,356 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User guess number 1234
+2022-06-16 23:34:48,357 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=17 was found
+2022-06-16 23:34:51,341 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was found
+2022-06-16 23:34:51,342 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was found
+2022-06-16 23:34:51,343 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was updated
+2022-06-16 23:34:51,344 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was found
+2022-06-16 23:34:51,344 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was found
+2022-06-16 23:34:51,345 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-2] TurnEntity with id=19 was saved
+2022-06-16 23:34:51,345 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User guess number 5634
+2022-06-16 23:34:51,346 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=17 was found
+2022-06-16 23:34:55,040 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was found
+2022-06-16 23:34:55,040 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was found
+2022-06-16 23:34:55,041 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was updated
+2022-06-16 23:34:55,041 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was found
+2022-06-16 23:34:55,042 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was found
+2022-06-16 23:34:55,042 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-3] TurnEntity with id=20 was saved
+2022-06-16 23:34:55,042 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User guess number 5674
+2022-06-16 23:34:55,042 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=17 was found
+2022-06-16 23:34:59,734 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was found
+2022-06-16 23:34:59,735 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was found
+2022-06-16 23:34:59,736 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was updated
+2022-06-16 23:34:59,737 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was found
+2022-06-16 23:34:59,737 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was found
+2022-06-16 23:34:59,737 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-4] TurnEntity with id=21 was saved
+2022-06-16 23:34:59,738 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User guess number 5734
+2022-06-16 23:34:59,738 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=17 was found
+2022-06-16 23:35:03,666 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was found
+2022-06-16 23:35:03,666 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was found
+2022-06-16 23:35:03,667 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was updated
+2022-06-16 23:35:03,667 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was found
+2022-06-16 23:35:03,667 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was found
+2022-06-16 23:35:03,668 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-5] TurnEntity with id=22 was saved
+2022-06-16 23:35:03,668 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] User guess number 7634
+2022-06-16 23:35:03,668 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=17 was found
+2022-06-16 23:35:08,594 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,595 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,595 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was updated
+2022-06-16 23:35:08,596 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,596 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was updated
+2022-06-16 23:35:08,596 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,597 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-6] TurnEntity with id=23 was saved
+2022-06-16 23:35:08,597 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User guess number 7635
+2022-06-16 23:35:08,597 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,597 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=17 was found
+2022-06-16 23:35:08,597 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User lose the game
+2022-06-16 23:35:08,602 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] Send user statistic
+2022-06-16 23:35:08,603 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-7] Found 1 GameEntities with id '16'
+2022-06-16 23:35:08,604 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] Found 6 TurnEntities with id=17
+2022-06-16 23:35:35,452 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-4] UserEntity with id=16 was found
+2022-06-16 23:35:35,452 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=24 was saved
+2022-06-16 23:35:35,452 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User started the game
+2022-06-16 23:35:45,700 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,701 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,701 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was updated
+2022-06-16 23:35:45,701 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,702 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was updated
+2022-06-16 23:35:45,702 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,702 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-1] TurnEntity with id=25 was saved
+2022-06-16 23:35:45,702 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User guess number 6278
+2022-06-16 23:35:45,703 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,703 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=24 was found
+2022-06-16 23:35:45,703 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User win the game
+2022-06-16 23:35:45,707 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] Send user statistic
+2022-06-16 23:35:45,709 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-7] Found 2 GameEntities with id '16'
+2022-06-16 23:35:45,710 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] Found 6 TurnEntities with id=17
+2022-06-16 23:35:45,710 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] Found 1 TurnEntities with id=24
+2022-06-16 23:41:36,089 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-3] UserEntity with id=1 was saved
+2022-06-16 23:41:36,090 INFO com.opencode.summerpractice.controllers.MainController [http-nio-8080-exec-3] user qwe login
+2022-06-16 23:41:37,114 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-2] UserEntity with id=1 was found
+2022-06-16 23:41:37,119 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was saved
+2022-06-16 23:41:37,119 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User started the game
+2022-06-16 23:41:40,462 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was found
+2022-06-16 23:41:40,462 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was found
+2022-06-16 23:41:40,466 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was updated
+2022-06-16 23:41:40,466 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was found
+2022-06-16 23:41:40,467 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was found
+2022-06-16 23:41:40,470 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-4] TurnEntity with id=3 was saved
+2022-06-16 23:41:40,472 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User guess number 1234
+2022-06-16 23:41:40,472 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=2 was found
+2022-06-16 23:41:44,586 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was found
+2022-06-16 23:41:44,586 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was found
+2022-06-16 23:41:44,587 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was updated
+2022-06-16 23:41:44,587 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was found
+2022-06-16 23:41:44,588 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was found
+2022-06-16 23:41:44,588 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-5] TurnEntity with id=4 was saved
+2022-06-16 23:41:44,588 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] User guess number 1235
+2022-06-16 23:41:44,589 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=2 was found
+2022-06-16 23:41:49,158 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:41:49,159 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:41:49,160 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was updated
+2022-06-16 23:41:49,160 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:41:49,161 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:41:49,161 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-6] TurnEntity with id=5 was saved
+2022-06-16 23:41:49,161 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-6] User guess number 1233
+2022-06-16 23:41:49,162 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-6] GameEntity with id=2 was found
+2022-06-16 23:41:49,490 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was found
+2022-06-16 23:41:49,491 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was found
+2022-06-16 23:41:49,491 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was updated
+2022-06-16 23:41:49,492 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was found
+2022-06-16 23:41:49,492 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was found
+2022-06-16 23:41:49,492 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-7] TurnEntity with id=6 was saved
+2022-06-16 23:41:49,493 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] User guess number 1233
+2022-06-16 23:41:49,493 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=2 was found
+2022-06-16 23:41:49,700 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was found
+2022-06-16 23:41:49,700 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was found
+2022-06-16 23:41:49,701 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was updated
+2022-06-16 23:41:49,701 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was found
+2022-06-16 23:41:49,702 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was found
+2022-06-16 23:41:49,703 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-8] TurnEntity with id=7 was saved
+2022-06-16 23:41:49,703 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-8] User guess number 1233
+2022-06-16 23:41:49,703 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=2 was found
+2022-06-16 23:41:49,885 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was found
+2022-06-16 23:41:49,885 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was found
+2022-06-16 23:41:49,886 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was updated
+2022-06-16 23:41:49,887 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was found
+2022-06-16 23:41:49,887 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was found
+2022-06-16 23:41:49,887 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-9] TurnEntity with id=8 was saved
+2022-06-16 23:41:49,887 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-9] User guess number 1233
+2022-06-16 23:41:49,888 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-9] GameEntity with id=2 was found
+2022-06-16 23:41:50,088 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was found
+2022-06-16 23:41:50,089 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was found
+2022-06-16 23:41:50,089 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was updated
+2022-06-16 23:41:50,090 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was found
+2022-06-16 23:41:50,090 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was found
+2022-06-16 23:41:50,091 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-10] TurnEntity with id=9 was saved
+2022-06-16 23:41:50,091 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-10] User guess number 1233
+2022-06-16 23:41:50,091 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=2 was found
+2022-06-16 23:41:50,295 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was found
+2022-06-16 23:41:50,296 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was found
+2022-06-16 23:41:50,297 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was updated
+2022-06-16 23:41:50,297 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was found
+2022-06-16 23:41:50,298 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was found
+2022-06-16 23:41:50,298 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-1] TurnEntity with id=10 was saved
+2022-06-16 23:41:50,298 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User guess number 1233
+2022-06-16 23:41:50,299 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=2 was found
+2022-06-16 23:41:50,498 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:41:50,498 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:41:50,499 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was updated
+2022-06-16 23:41:50,499 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:41:50,499 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:41:50,500 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-3] TurnEntity with id=11 was saved
+2022-06-16 23:41:50,500 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] User guess number 1233
+2022-06-16 23:41:50,500 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] GameEntity with id=2 was found
+2022-06-16 23:41:50,707 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,707 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,708 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was updated
+2022-06-16 23:41:50,709 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,709 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was updated
+2022-06-16 23:41:50,709 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,710 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-2] TurnEntity with id=12 was saved
+2022-06-16 23:41:50,710 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User guess number 1233
+2022-06-16 23:41:50,710 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,710 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-2] GameEntity with id=2 was found
+2022-06-16 23:41:50,711 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-2] User lose the game
+2022-06-16 23:41:50,716 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] Send user statistic
+2022-06-16 23:41:50,773 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-4] Found 1 GameEntities with id '1'
+2022-06-16 23:41:50,777 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] Found 10 TurnEntities with id=2
+2022-06-16 23:42:12,192 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-5] UserEntity with id=1 was found
+2022-06-16 23:42:12,193 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] GameEntity with id=13 was saved
+2022-06-16 23:42:12,193 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] User started the game
+2022-06-16 23:42:22,177 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,177 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,178 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was updated
+2022-06-16 23:42:22,178 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,179 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was updated
+2022-06-16 23:42:22,179 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,179 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-10] TurnEntity with id=14 was saved
+2022-06-16 23:42:22,179 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-10] User guess number 5146
+2022-06-16 23:42:22,180 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,180 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-10] GameEntity with id=13 was found
+2022-06-16 23:42:22,180 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-10] User win the game
+2022-06-16 23:42:22,185 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-3] Send user statistic
+2022-06-16 23:42:22,186 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-3] Found 2 GameEntities with id '1'
+2022-06-16 23:42:22,187 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] Found 10 TurnEntities with id=2
+2022-06-16 23:42:22,188 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-3] Found 1 TurnEntities with id=13
+2022-06-16 23:42:26,303 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-8] UserEntity with id=1 was found
+2022-06-16 23:42:26,304 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-8] GameEntity with id=15 was saved
+2022-06-16 23:42:26,304 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-8] User started the game
+2022-06-16 23:42:29,754 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was found
+2022-06-16 23:42:29,755 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was found
+2022-06-16 23:42:29,755 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was updated
+2022-06-16 23:42:29,756 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was found
+2022-06-16 23:42:29,756 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was found
+2022-06-16 23:42:29,757 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-7] TurnEntity with id=16 was saved
+2022-06-16 23:42:29,757 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-7] User guess number 1236
+2022-06-16 23:42:29,757 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-7] GameEntity with id=15 was found
+2022-06-16 23:42:32,011 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was found
+2022-06-16 23:42:32,011 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was found
+2022-06-16 23:42:32,012 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was updated
+2022-06-16 23:42:32,012 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was found
+2022-06-16 23:42:32,013 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was found
+2022-06-16 23:42:32,013 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-4] TurnEntity with id=17 was saved
+2022-06-16 23:42:32,013 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-4] User guess number 1236
+2022-06-16 23:42:32,014 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-4] GameEntity with id=15 was found
+2022-06-16 23:42:48,626 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,626 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,627 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was updated
+2022-06-16 23:42:48,627 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,628 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was updated
+2022-06-16 23:42:48,628 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,629 INFO com.opencode.summerpractice.daos.TurnEntityDao [http-nio-8080-exec-1] TurnEntity with id=18 was saved
+2022-06-16 23:42:48,629 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User guess number 1236
+2022-06-16 23:42:48,629 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,629 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-1] GameEntity with id=15 was found
+2022-06-16 23:42:48,629 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-1] User lose the game
+2022-06-16 23:42:48,634 INFO com.opencode.summerpractice.controllers.GameController [http-nio-8080-exec-5] Send user statistic
+2022-06-16 23:42:48,635 INFO com.opencode.summerpractice.daos.UserEntityDao [http-nio-8080-exec-5] Found 3 GameEntities with id '1'
+2022-06-16 23:42:48,636 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 10 TurnEntities with id=2
+2022-06-16 23:42:48,636 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 1 TurnEntities with id=13
+2022-06-16 23:42:48,636 INFO com.opencode.summerpractice.daos.GameEntityDao [http-nio-8080-exec-5] Found 3 TurnEntities with id=15

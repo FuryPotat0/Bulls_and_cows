@@ -8,6 +8,7 @@ import { AppLogin } from './login.component';
 import { GamePage } from './game-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CdTimerModule } from 'angular-cd-timer';
 
 const routes: Routes = [
   {path: '', component: AppLogin},
@@ -21,7 +22,8 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     // AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CdTimerModule
   ],
   declarations: [
     AppComponent,

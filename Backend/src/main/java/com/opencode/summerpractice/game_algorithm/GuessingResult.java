@@ -9,11 +9,6 @@ public class GuessingResult {
     private int bulls;
     private int cows;
 
-    public GuessingResult(){
-        bulls = 0;
-        cows = 0;
-    }
-
     public GuessingResult(int bulls, int cows) {
         this.bulls = bulls;
         this.cows = cows;
