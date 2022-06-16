@@ -1,0 +1,9 @@
+<p>keky</p>
+
+<input
+#newUser
+(keyup.enter)="createUser(newUser.value); newUser.value = ''"
+class="lg-text-input"/>
+
+<button class="btn-primary" (click)="createUser(newUser.value)">Add</button>
+<router-outlet></router-outlet>
