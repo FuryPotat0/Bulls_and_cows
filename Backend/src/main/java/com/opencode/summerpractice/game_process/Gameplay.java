@@ -1,4 +1,4 @@
-package com.opencode.summerpractice.game_algorithm;
+package com.opencode.summerpractice.game_process;
 
 import com.opencode.summerpractice.daos.GameEntityDao;
 import com.opencode.summerpractice.daos.TurnEntityDao;
@@ -86,14 +86,16 @@ public class Gameplay {
             gameEntity.setWin(true);
             gameEntity.setIsEnd(true);
             gameEntity.setGameTime((System.currentTimeMillis() - gameEntity.getGameTime()) / 1000);
-
             gameEntityDao.update(gameEntity);
-        } else if (gameEntity.getTurnsNumber() >= turnsLimitation
-                || (System.currentTimeMillis() - gameEntity.getGameTime()) / 1000 > timeLimitation) {
+        } else if (turnsLimitation > 0 && gameEntity.getTurnsNumber() >= turnsLimitation) {
             gameEntity.setWin(false);
             gameEntity.setIsEnd(true);
             gameEntity.setGameTime((System.currentTimeMillis() - gameEntity.getGameTime()) / 1000);
-
+            gameEntityDao.update(gameEntity);
+        } else if (timeLimitation > 0 && (System.currentTimeMillis() - gameEntity.getGameTime()) / 1000 > timeLimitation) {
+            gameEntity.setWin(false);
+            gameEntity.setIsEnd(true);
+            gameEntity.setGameTime((System.currentTimeMillis() - gameEntity.getGameTime()) / 1000);
             gameEntityDao.update(gameEntity);
         }
     }
@@ -119,12 +121,12 @@ public class Gameplay {
         return arrayList;
     }
 
-    public boolean isEnd(Long gameId){
+    public boolean isEnd(Long gameId) {
         GameEntity gameEntity = gameEntityDao.findById(gameId);
         return gameEntity.getIsEnd();
     }
 
-    public boolean isWin(Long gameId){
+    public boolean isWin(Long gameId) {
         GameEntity gameEntity = gameEntityDao.findById(gameId);
         return gameEntity.isWin();
     }

@@ -3,6 +3,7 @@ package com.opencode.summerpractice.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@Audited
 @Table(name = "turn_entity")
 public class TurnEntity {
     @Id

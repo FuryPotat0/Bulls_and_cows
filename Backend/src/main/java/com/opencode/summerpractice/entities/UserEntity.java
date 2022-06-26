@@ -3,6 +3,7 @@ package com.opencode.summerpractice.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Audited
 @Table(name = "user_entity")
 public class UserEntity {
     @Id

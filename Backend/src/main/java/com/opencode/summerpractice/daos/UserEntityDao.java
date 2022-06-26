@@ -16,28 +16,21 @@ import java.util.List;
 @Repository
 public class UserEntityDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserEntityDao.class);
+
     public void save(UserEntity entity) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
-        try {
+        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
             LOGGER.info("UserEntity with id={} was saved", entity.getId());
         } catch (HibernateException e) {
-            if (tx != null) {
+            if (tx != null)
                 tx.rollback();
-            }
             LOGGER.error("Can't save UserEntity");
             LOGGER.error(e.getMessage());
         }
-        session.close();
-    }
-
-    public void save(UserEntity entity, Long id) {
-        entity.setId(id);
-        save(entity);
     }
 
     public UserEntity findById(Long id) {
