@@ -1,4 +1,4 @@
-package com.opencode.summerpractice.game_algorithm;
+package com.opencode.summerpractice.game_process;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,14 +16,10 @@ public class HiddenNumber {
 
     public HiddenNumber() {
         number = new int[10];
-        for (int i = 0; i < 10; i++)
-            number[i] = 0;
     }
 
     private void clearNumber(){
         number = new int[10];
-        for (int i = 0; i < 10; i++)
-            number[i] = 0;
     }
 
     public void setNumber(String userNumber) { // устанавливает заданное число

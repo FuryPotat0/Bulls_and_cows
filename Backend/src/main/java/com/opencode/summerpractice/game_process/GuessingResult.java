@@ -1,4 +1,4 @@
-package com.opencode.summerpractice.game_algorithm;
+package com.opencode.summerpractice.game_process;
 
 import lombok.Getter;
 import lombok.Setter;

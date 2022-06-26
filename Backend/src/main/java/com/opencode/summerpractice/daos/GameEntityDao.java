@@ -17,32 +17,26 @@ import java.util.List;
 public class GameEntityDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameEntityDao.class);
     public void save(GameEntity entity) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = null;
-
-        try {
+        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
             LOGGER.info("GameEntity with id={} was saved", entity.getId());
         } catch (HibernateException e) {
-            if (tx != null) {
+            if (tx != null)
                 tx.rollback();
-            }
             e.printStackTrace();
             LOGGER.error("Can't save GameEntity");
             LOGGER.error(e.getMessage());
         }
-        session.close();
     }
 
     public void update(GameEntity entity) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = null;
-
-        try {
+        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
-            session.saveOrUpdate(entity);
+            session.update(entity);
             tx.commit();
             LOGGER.info("GameEntity with id={} was updated", entity.getId());
         } catch (HibernateException e) {
@@ -51,7 +45,6 @@ public class GameEntityDao {
             LOGGER.error("Can't update GameEntity");
             LOGGER.error(e.getMessage());
         }
-        session.close();
     }
 
     public GameEntity findById(Long id) {

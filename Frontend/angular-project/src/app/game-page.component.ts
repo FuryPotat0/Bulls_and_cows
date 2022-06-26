@@ -50,7 +50,7 @@ export class GamePage implements OnInit, OnDestroy {
             console.log(turnsLimitation)
         });
         this.subs = this.gameSettingsService.timeLimitation$.subscribe((timeLimitation) => this.timeLimitation = Number(timeLimitation));
-        
+
     }
 
     ngOnDestroy(): void {
@@ -58,7 +58,7 @@ export class GamePage implements OnInit, OnDestroy {
     }
 
     startGame() {
-        if (this.userId === ""){
+        if (this.userId === "") {
             this.route.navigateByUrl('/');
         }
         if (!this.isGameStarted) {
@@ -80,29 +80,35 @@ export class GamePage implements OnInit, OnDestroy {
     }
 
     pickNumber(userNumber: string) {
-        if (this.userId === ""){
+        if (this.userId === "") {
             this.route.navigateByUrl('/');
         }
         if (this.isGameStarted) {
-            this.turnsPast++;
-            if (this.turnsLimitation > 0) {
-                this.turnsLeft--;
-            }
-            const body = { "number": userNumber, "gameId": this.gameId };
 
-            this.http.post('http://localhost:8080/game-page/guess', body).subscribe((data: any) => {
-                this.result = data.result;
-                
-                if (data.isEnd == "true") {
-                    this.basicTimer.stop();
-                    this.isGameStarted = false;
-                    console.log("into if");
-                    this.http.post('http://localhost:8080/game-page/statistic', this.userId).subscribe((data) => {
-                        this.statistic = data;
-                        console.log(data);
-                    });
+
+            if (userNumber.match(/^\d{4}$/)) {
+                this.turnsPast++;
+                if (this.turnsLimitation > 0) {
+                    this.turnsLeft--;
                 }
-            });
+                const body = { "number": userNumber, "gameId": this.gameId };
+                this.http.post('http://localhost:8080/game-page/guess', body).subscribe((data: any) => {
+                    this.result = data.result;
+
+                    if (data.isEnd == "true") {
+                        this.basicTimer.stop();
+                        this.isGameStarted = false;
+                        console.log("into if");
+                        this.http.post('http://localhost:8080/game-page/statistic', this.userId).subscribe((data) => {
+                            this.statistic = data;
+                            console.log(data);
+                        });
+                    }
+                });
+            }
+
         }
     }
+
+
 }

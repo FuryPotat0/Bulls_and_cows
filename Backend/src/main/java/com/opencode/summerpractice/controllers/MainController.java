@@ -1,6 +1,6 @@
 package com.opencode.summerpractice.controllers;
 
-import com.opencode.summerpractice.game_algorithm.Gameplay;
+import com.opencode.summerpractice.game_process.Gameplay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

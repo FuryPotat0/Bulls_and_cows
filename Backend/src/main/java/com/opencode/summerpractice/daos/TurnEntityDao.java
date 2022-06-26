@@ -13,23 +13,20 @@ import org.springframework.stereotype.Repository;
 public class TurnEntityDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(TurnEntityDao.class);
     public void save(TurnEntity entity) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
-        try {
+        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
             LOGGER.info("TurnEntity with id={} was saved", entity.getId());
         } catch (HibernateException e) {
-            if (tx != null) {
+            if (tx != null)
                 tx.rollback();
-            }
             e.printStackTrace();
             LOGGER.error("Can't save TurnEntity");
             LOGGER.error(e.getMessage());
         }
-        session.close();
     }
 }
 

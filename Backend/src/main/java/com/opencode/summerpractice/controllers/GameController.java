@@ -1,8 +1,8 @@
 package com.opencode.summerpractice.controllers;
 
 import com.opencode.summerpractice.responds.GameAndNumber;
-import com.opencode.summerpractice.game_algorithm.Gameplay;
-import com.opencode.summerpractice.game_algorithm.GuessingResult;
+import com.opencode.summerpractice.game_process.Gameplay;
+import com.opencode.summerpractice.game_process.GuessingResult;
 import com.opencode.summerpractice.responds.GameRespond;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +36,6 @@ public class GameController {
     public Map<String, String> guessNumber(@RequestBody GameAndNumber number) {
         HashMap<String, String> map = new HashMap<>();
         if (!gameplay.isEnd(Long.parseLong(number.getGameId()))){
-            System.out.println("number: " + number);
             GuessingResult res = gameplay.guessHiddenNumber(Long.parseLong(number.getGameId()), number.getNumber());
             map.put("result", "быков: " + res.getBulls() + " коров: " + res.getCows());
             map.put("isEnd", "false");
